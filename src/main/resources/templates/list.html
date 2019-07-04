@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+<head>
+<style>
+table {
+  font-family: arial, sans-serif;
+  border-collapse: collapse;
+  width: 100%;
+}
+
+td, th {
+  border: 1px solid #dddddd;
+  text-align: left;
+  padding: 8px;
+}
+
+tr:nth-child(even) {
+  background-color: #dddddd;
+}
+</style>
+<meta charset="ISO-8859-1"></meta>
+<title>List Product</title>
+</head>
+<body>
+<table style= width 100%>
+  <tr>
+    <th>ID Product</th>
+    <th>Brand ID</th>
+    <th>Name</th>
+    <th>Price</th>
+    <th>Type</th>
+  </tr>
+  <tr th:each="product : ${listProduct}">
+  <td th:text="${product.id}"></td>
+  <td th:text="${product.brandId}"></td>
+  <td th:text="${product.name}"></td>
+  <td th:text="${product.price}"></td>
+  <td th:text="${product.type}"></td>
+  </tr>
+</table>
+</body>
+</html>
