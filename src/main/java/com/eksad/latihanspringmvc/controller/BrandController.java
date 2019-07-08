@@ -23,30 +23,30 @@ public class BrandController {
 
 	@Autowired
 	BrandRepositoryDao brandRepositoryDao;
-	
+
 	@RequestMapping("")
 	public String index(Model model) {
-		
+
 		List<Brand> list = brandRepositoryDao.findAll();
-		
+
 		model.addAttribute("listBrand", list);
-		
+
 		return "listBrand";
 	}
 	//add
 	@RequestMapping("/add")
 	public String addBrand(Model model){
 		Brand brand = new Brand();
-		
+
 		model.addAttribute("brand", brand);
-		
+
 		return "addBrand";
 	}
 	//save
 	@RequestMapping(value =  "/save", method = RequestMethod.POST)
 	public String save(@ModelAttribute Brand brand) {
 		brandRepositoryDao.save(brand);
-		
+
 		return "redirect:/brand";
 	}
 	//update/edit
@@ -64,7 +64,7 @@ public class BrandController {
 //	        model.addAttribute("student", student);
 //	        return "update-student";
 //	    }
-	
+
 	//edit
 	@RequestMapping(value = "update/{id}", method = RequestMethod.PUT)
 	public Brand update (@RequestBody Brand brand, @PathVariable Long id) {			
@@ -78,23 +78,22 @@ public class BrandController {
 			return null;
 		}	    
 	}
-	
 	//delete
-	@RequestMapping(value="delete/{id}",method = RequestMethod.GET)
-    public String deleteBrand(@PathVariable("id") long id) {
-        Brand brand = brandRepositoryDao.getOne(id);
-            brandRepositoryDao.delete(brand);
-        return "redirect:/addBrand";
+	@RequestMapping("/delete/{id}")
+	public String delete(@PathVariable ("id") Long id) {
+		Brand brand = brandRepositoryDao.getOne(id);
+		if(brand==null)
+		{
+			throw new EntityNotFoundException("Not Found");
+		}
+		brandRepositoryDao.delete(brand);
+		return "redirect:/brand";
+	}	
+	//edit
+	@RequestMapping(value = "/edit/{id}", method = RequestMethod.GET)
+	public String editBrand(@PathVariable Long id, Model model) {
+		Brand brand = brandRepositoryDao.getOne(id);
+		model.addAttribute("brand", brand);
+		return "editBrand";
 	}
 }
-
-//@RequestMapping(value = "/editBrand{id}", method = RequestMethod.GET)
-//public String editBrand(Model model, @PathVariable int id) {
-//	   String idAsString = Integer.toString(id);
-//	    model.addAttribute("brand",brandcontroller.getBrandById(idAsString));
-//	    return "editBrand{id}";
-//}
-//	private Object getBrandById(String idAsString) {
-//		// TODO Auto-generated method stub
-//		return null;
-//	}

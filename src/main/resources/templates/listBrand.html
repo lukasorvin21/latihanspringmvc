@@ -29,20 +29,21 @@
 	    <th>ID</th>
 	    <th>Name</th>
 	    <th>Product Type</th>
-	    <th>Action</th>
+	    <th>Edit</th>
+	    <th>Delete</th>
 	  </tr>
 	  <tr th:each="brand : ${listBrand}">
 	  	<td th:text="${brand.id}"></td>
 	  	<td th:text="${brand.name}"></td>
 	  	<td th:text="${brand.product_type}"></td>
-	  	<td> <a href="#">Edit</a> <a href="#">Delete</a> 
-
+	  	<td> <a href="#" th:href="@{/brand/edit/} +${brand.id}">Edit</a></td>
+		<td> <a href="#" th:href="@{/brand/delete/} +${brand.id}">Delete</a></td>
   			  
 	  	</td>
 	  	
 	  </tr>
 	  	
 	</table>
-
+	<a href="#" th:href="@{/brand/add/}">ADD DATA</a>
 </body>
 </html>

@@ -6,25 +6,24 @@
 </head>
 <body>
 <form action="#" method="post" th:action="@{/brand/save}" th:object="${brand}">
+<input type="hidden" th:field="*{id}" />	
 
-	  ID:<br>
-	  <input type="text" th:field="*{id}" />
-	  <br>
-	  
-	  Name:<br>
-	  <input type="text" th:field="*{name}"/>
-	  <br>
-	  
-	  Product Type:<br>
-	  <input type="text" th:field="*{product_type}"/>
-	  <br>
-	  
-	 <br>
-	 <input type="submit" value="save"/>
-	 <br>
-	 
-		 
-	</form> 
-
+	ID<br/>
+	<input type="text" th:field="*{id}" />
+  	<br/>
+  	
+  	Name<br/>
+  	<input type="text" th:field="*{name}" />
+  	<br/>
+  	
+  	Product Type<br/>
+  	<input type="text" th:field="*{product_type}" />
+  	<br/>
+  	
+  	<br/>
+  	<input type="submit" value="Save" />
+</form> 
+</body>
+</html>
 </body>
 </html>

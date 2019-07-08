@@ -13,15 +13,15 @@ public class Brand {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private Long Id;
-	
+	private Long id;
 	private String name;
 	private String product_type;
+	
 	public Long getId() {
-		return Id;
+		return id;
 	}
 	public void setId(Long id) {
-		Id = id;
+		this.id = id;
 	}
 	public String getName() {
 		return name;
